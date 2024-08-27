@@ -95,7 +95,7 @@ getQuantileFunction <- function(x) {
   delta <- diff(range(x$x))/ng
   g <- x$x[1] + delta/2 + delta*(0:(ng-1))
   cdf <- cumsum( delta * (x$y[2:(ng+1)] + x$y[1:ng]) / 2 )
-  return(approxfun(cdf, g))
+  return(approxfun(cdf, g, ties=mean))
 
 }
 
@@ -114,7 +114,7 @@ getQuantile <- function(x, y, p) {
   delta <- diff(range(x))/ng
   g <- x[1] + delta/2 + delta*(0:(ng-1))
   cdf <- cumsum( delta * (y[2:(ng+1)] + y[1:ng]) / 2 )
-  return(approx(cdf, g, p)$y)
+  return(approx(cdf, g, p, ties=mean)$y)
 }
 
 
@@ -337,7 +337,7 @@ CleanWeights <- function(w) {
 
 
 
-#' Create a vector of kernel centers covering [LB, UB].
+#' Create a vector of kernel centers covering \[LB, UB\].
 #'
 #' Make the spacing as large as possible without going over \code{width}.
 #' If symmetric, ensure we have an even number of centers that are symmetric around \code{PoS}.

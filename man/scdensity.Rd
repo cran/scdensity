@@ -5,18 +5,24 @@
 \alias{density}
 \title{Shape-constrained kernel density estimation.}
 \usage{
-scdensity(x, bw = "nrd0", constraint = c("unimodal", "monotoneRightTail",
-  "monotoneLeftTail", "twoInflections", "twoInflections+", "boundedLeft",
-  "boundedRight", "symmetric", "bimodal"), method = c("adjustedKDE",
-  "weightedKDE", "greedySharpenedKDE"), opts = NULL, adjust = 1, n = 512,
-  na.rm = FALSE)
+scdensity(
+  x,
+  bw = "nrd0",
+  constraint = c("unimodal", "monotoneRightTail", "monotoneLeftTail", "twoInflections",
+    "twoInflections+", "boundedLeft", "boundedRight", "symmetric", "bimodal"),
+  method = c("adjustedKDE", "weightedKDE", "greedySharpenedKDE"),
+  opts = NULL,
+  adjust = 1,
+  n = 512,
+  na.rm = FALSE
+)
 }
 \arguments{
 \item{x}{A vector of data from which the estimate is to be computed.}
 
 \item{bw}{The bandwidth.  It is specified as either a numerical value or as one of the
 character strings \code{"nrd0"},  \code{"nrd"}, \code{"ucv"}, \code{"bcv"}, or
-\code{"SJ"}, exactly as in \code{\link[stats]{density}}.}
+\code{"SJ"}, exactly as in \code{\link[stats:density]{stats::density()}}.}
 
 \item{constraint}{A vector of strings giving the operative shape constraints. Elements
 must partially match different alternatives among \code{"unimodal"},
@@ -33,41 +39,43 @@ use \code{opts = list(modeLocation = 0)} to force the mode to be at zero when th
 constraint is \code{unimodal}. See below for lists of
 available options.}
 
-\item{adjust}{A scaling factor for the bandwidth, just as in \code{\link[stats]{density}}.}
+\item{adjust}{A scaling factor for the bandwidth, just as in \code{\link[stats:density]{stats::density()}}.}
 
 \item{n}{The number of points returned in the density estimate.  Same as in
-\code{\link[stats]{density}}.}
+\code{\link[stats:density]{stats::density()}}.}
 
 \item{na.rm}{Logical indicating whether or not to remove missing values from \code{x}.
-Same as in \code{\link[stats]{density}}.}
+Same as in \code{\link[stats:density]{stats::density()}}.}
 }
 \value{
 A list with the following elements:
-\item{\code{constraint}}{The constraint(s) used for estimation.  Might differ from
-  the constraints supplied to the function if they included redundant constraints.}
-\item{\code{method}}{The estimation method used.}
-\item{\code{f0}}{A function.  Use \code{f0(v)} to evaluate the unconstrained KDE at the points in
-  \code{v}.}
-\item{\code{fhat}}{A function. Use \code{fhat(v)} to evaluate the constrained KDE at the points in
-  \code{v}.}
-\item{\code{data}}{The data used to generate the estimate.}
-\item{\code{bw}}{The bandwidth used.}
-\item{\code{extra}}{A list holding additional outputs that are specific to the chosen method.
-  See the "method details" section. }
-\item{\code{x}}{A vector of abscissa values for plotting the estimate.  Same as in
-  \code{\link[stats]{density}}.}
-\item{\code{y}}{A vector of ordinate values for plotting the estimate.  Same as in
-  \code{\link[stats]{density}}.}
-\item{\code{n}}{The sample size, not including missing values.  Note, this \code{n} has
-  no relation to the \code{n} provided in the arguments.}
-\item{\code{data.name}}{Deparsed name of the \code{x} argument, used in plotting.}
-\item{\code{call}}{The call to the function.}
-\item{\code{has.na}}{Always \code{FALSE}.  Included for consistency with
-  \code{\link[stats]{density}}.}
+\itemize{
+\item \code{constraint} The constraint(s) used for estimation.  Might differ from
+the constraints supplied to the function if they included redundant constraints.
+\item \code{method} The estimation method used.
+\item \code{f0} A function.  Use \code{f0(v)} to evaluate the unconstrained KDE at the points in
+\code{v}.
+\item \code{fhat} A function. Use \code{fhat(v)} to evaluate the constrained KDE at the points in
+\code{v}.
+\item \code{data} The data used to generate the estimate.
+\item \code{bw} The bandwidth used.
+\item \code{extra} A list holding additional outputs that are specific to the chosen method.
+See the "method details" section.
+\item \code{x} A vector of abscissa values for plotting the estimate.  Same as in
+\code{\link[stats:density]{stats::density()}}.
+\item \code{y} A vector of ordinate values for plotting the estimate.  Same as in
+\code{\link[stats:density]{stats::density()}}.
+\item \code{n} The sample size, not including missing values.  Note, this \code{n} has
+no relation to the \code{n} provided in the arguments.
+\item \code{data.name} Deparsed name of the \code{x} argument, used in plotting.
+\item \code{call} The call to the function.
+\item \code{has.na} Always \code{FALSE}.  Included for consistency with
+\code{\link[stats:density]{stats::density()}}.
+}
 }
 \description{
 \code{scdensity} computes kernel density estimates that satisfy specified shape
-restrictions. It is used in the same way as \code{\link[stats]{density}}, and takes
+restrictions. It is used in the same way as \code{\link[stats:density]{stats::density()}}, and takes
 most of that function's arguments. Its default behavior is to compute a unimodal estimate.
 Use argument \code{constraint} to choose different shape constraints, \code{method} to
 choose a different estimation method, and \code{opts} to specify method- and
@@ -102,8 +110,6 @@ The figure below summarizes the valid constraint combinations.
 \if{latex}{\figure{ConstraintCombos.pdf}{options: width=5in}}
 }
 \section{Constraint details}{
-
-
 All of the constraints other than \code{symmetric} are restrictions on the sign of the estimate, or
 its derviatives, over certain intervals.  The boundaries of the intervals may be called
 \emph{important points}. If \code{method="greedySharpenedKDE"}, the important points are determined
@@ -114,49 +120,45 @@ and these values will be returned in the \code{extra} list.
 
 Here is a list of the constraints with their definitions and any relevant comments about their
 usage.
-
 \itemize{
-\item{\code{unimodal}:}{ The estimate is nondecreasing to the left of \code{opts$modeLocation}, and
-nonincreasing to the right.  If \code{modeLocation} is not supplied, it is found by search.}
-\item{\code{monotoneRightTail}:}{ The estimate is nonincreasing to the right of the \code{opts$rightTail}
+\item \code{unimodal}: The estimate is nondecreasing to the left of \code{opts$modeLocation}, and
+nonincreasing to the right.  If \code{modeLocation} is not supplied, it is found by search.
+\item \code{monotoneRightTail}: The estimate is nonincreasing to the right of the \code{opts$rightTail}
 percentile of the unconstrained estimate. \code{rightTail} is a numeric value between 0 and 100.
-If it is not supplied, it is set to its default value, 90.}
-\item{\code{monotoneLeftTail}:}{ The estimate is nondecreasing to the left of the \code{opts$leftTail}
+If it is not supplied, it is set to its default value, 90.
+\item \code{monotoneLeftTail}: The estimate is nondecreasing to the left of the \code{opts$leftTail}
 percentile of the unconstrained estimate. \code{leftTail} is a numeric value between 0 and 100. If
-it is not supplied, it is set to its default value, 10.}
-\item{\code{twoInflections}:}{ The estimate has two inflection points, found at
+it is not supplied, it is set to its default value, 10.
+\item \code{twoInflections}: The estimate has two inflection points, found at
 \code{opts$inflectionPoints[1]} and \code{opts$inflectionPoints[2]}. This constraint implies unimodality,
 but provides greater smoothness than \code{unimodal}. If \code{inflectionPoints} is not supplied, it is
-found by search.}
-\item{\code{twoInflections+}:}{ The \emph{derivative} of the estimate has three inflection
+found by search.
+\item \code{twoInflections+}: The \emph{derivative} of the estimate has three inflection
 points, located at \code{opts$inflectionPoints[1]}, \code{opts$inflectionPoints[2]}, and
 \code{opts$inflectionPoints[3]}.  This constraint implies \code{twoInflections} but is even smoother.
 Most parametric densities with two tails satisfy this constraint.  If \code{inflectionPoints} is not
-supplied, it is found by search.}
-\item{\code{boundedLeft}:}{ The estimate is zero to the left of \code{opts$lowerBound}. The value of
+supplied, it is found by search.
+\item \code{boundedLeft}: The estimate is zero to the left of \code{opts$lowerBound}. The value of
 \code{lowerBound} must be specified in \code{opts}. This constraint is implemented only up to a
-numerical tolerance. Consequently it is still possible to use it with the Gaussian kernel.}
-\item{\code{boundedRight}:}{ The estimate is zero to the right of \code{opts$upperBound}. The value of
+numerical tolerance. Consequently it is still possible to use it with the Gaussian kernel.
+\item \code{boundedRight}: The estimate is zero to the right of \code{opts$upperBound}. The value of
 \code{upperBound} must be specified in \code{opts}. This constraint is
 implemented only up to a numerical tolerance.  Consequently it is still possible to use
-it with the Gaussian kernel.}
-\item{\code{symmetric}:}{ The estimate is symmetric around \code{opts$pointOfSymmetry}. If
-\code{pointOfSymmetry} is not provided, it is found by search.}
-\item{\code{bimodal}:}{ The estimate has modes at \code{opts$modeLocation[1]} and \code{opts$modeLocation[3]},
+it with the Gaussian kernel.
+\item \code{symmetric}: The estimate is symmetric around \code{opts$pointOfSymmetry}. If
+\code{pointOfSymmetry} is not provided, it is found by search.
+\item \code{bimodal}: The estimate has modes at \code{opts$modeLocation[1]} and \code{opts$modeLocation[3]},
 with an antimode (local minimum) at \code{opts$modeLocation[2]}. If \code{modeLocation} is not
-specified, it is found by search.}
+specified, it is found by search.
 }
 }
 
 \section{Method details}{
-
-
 The \code{adjustedKDE} and \code{weightedKDE} methods are implemented using a common framework
 where the standard KDE is first approximated by a binning step, after which the constrained estimate
 is obtained. The \code{greedySharpenedKDE} method uses a different approach.
-
-
 \subsection{adjustedKDE and weightedKDE}{
+
 The \code{adjustedKDE} method is based on the method of Wolters and Braun (2017).  The method
 uses the usual unconstrained kernel density estimate as a pilot estimate, and adjusts the shape of
 this estimate by adding a function to it.  The function is selected to minimally change the
@@ -171,12 +173,12 @@ may be used with this method.
 For either of these methods, the following optional arguments can be provided as elements of \code{opts}:
 \itemize{
 \item \code{ncheck}:  The number of abscissa points used for constraint checking.  By default,
-  this is set to \code{max(100, ceiling((diff(range(x)) + 6*h) / h))}, where \code{h} is
-  the bandwidth. With this default it should be rare to encounter constraint violations large enough
-  to be visible in a plot.  In the event that constraint violations are observed, re-run the estimation
-  with a larger value of \code{ncheck}.
+this is set to \code{max(100, ceiling((diff(range(x)) + 6*h) / h))}, where \code{h} is
+the bandwidth. With this default it should be rare to encounter constraint violations large enough
+to be visible in a plot.  In the event that constraint violations are observed, re-run the estimation
+with a larger value of \code{ncheck}.
 \item \code{verbose}: If \code{TRUE}, progress information will be displayed in the console.
-  The main use of this is to track the progress of the search for important points. Default is \code{FALSE}.
+The main use of this is to track the progress of the search for important points. Default is \code{FALSE}.
 }
 
 When either of these methods are used, the output list \code{extra} contains elements giving the locations of the
@@ -185,7 +187,7 @@ bimodal). Additionally, it containts the following elements:
 \itemize{
 \item \code{conCheckGrid}: A vector giving the abscissa values at which the constraints were enforced.
 \item \code{binnedCenters}: A vector giving the locations of the kernel centers determined in the
-  binning step.
+binning step.
 \item \code{binnedWeights}: The weights corresponding to the binned centers.
 \item \code{finalCenters}: The kernel centers used for the final estimate.
 \item \code{finalWeights}: The weights used for the final estimate.
@@ -193,6 +195,7 @@ bimodal). Additionally, it containts the following elements:
 }
 
 \subsection{greedySharpenedKDE}{
+
 The \code{greedySharpenedKDE} method is described in Wolters (2012a, 2012b). It uses a data sharpening
 (shifting the data points) approach.  Starting from an initial solution that satisfies the constraints,
 a greedy algorithm (implemented in the function \code{\link{improve}}) is used to move the points as close as
@@ -214,6 +217,7 @@ This option limits the maximum number of passes. Default is 500.
 iterated local search metaheuristic, as described in Wolters (2012b, sec. 3.4). This can improve solution
 quality, but requires the greedy search to be run \code{2*ILS} extra times.
 }
+
 When this method is used, the output list \code{extra} contains the following elements:
 \itemize{
 \item \code{xstar}: The final vector of "sharpened" data points used to generate the
@@ -223,14 +227,12 @@ estimate.
 }
 
 \section{References}{
-
-
 Hall and Huang (2002), Unimodal Density Estimation Using Kernel Methods, \emph{Statistica Sinica},
 12, 965-990.
 
 Wolters and Braun (2017), Enforcing Shape Constraints on a Probability Density Estimate Using an Additive
 Adjustment curve, \emph{Communications in Statistics - Simulation and Computation},
-\href{http://dx.doi.org/10.1080/03610918.2017.1288247}{available online}.
+47(3), 672-691.
 
 Wolters (2012a), A Greedy Algorithm for Unimodal Kernel Density Estimation by Data Sharpening,
 \emph{Journal of Statistical Software}, 46(6), 1–26.

@@ -4,8 +4,14 @@
 \alias{improve}
 \title{Move points closer to a target while maintaining a constraint.}
 \usage{
-improve(startValue, x, confun, verbose = FALSE, maxpasses = 500,
-  tol = diff(range(c(startValue, x))/1e+05))
+improve(
+  startValue,
+  x,
+  confun,
+  verbose = FALSE,
+  maxpasses = 500,
+  tol = diff(range(c(startValue, x))/1e+05)
+)
 }
 \arguments{
 \item{startValue}{The vector of starting values for the search.  Must satisfy

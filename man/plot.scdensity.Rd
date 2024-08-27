@@ -4,11 +4,20 @@
 \alias{plot.scdensity}
 \title{Plot method for class \code{scdensity}.}
 \usage{
-\method{plot}{scdensity}(x, detail = 4, main = c("Density Estimate",
-  "Q-Q Plot"), xlab = c(x$data.name, "Constrained KDE Quantiles"),
-  ylab = c("Density", "Sample Quantiles"), type = c("l", "l", "p"),
-  lty = c(1, 2, 0), pch = c(-1, -1, 1), col = c("black", gray(0.4),
-  "black"), lwd = c(2, 1, 0), zero.line = TRUE, ...)
+\method{plot}{scdensity}(
+  x,
+  detail = 4,
+  main = c("Density Estimate", "Q-Q Plot"),
+  xlab = c(x$data.name, "Constrained KDE Quantiles"),
+  ylab = c("Density", "Sample Quantiles"),
+  type = c("l", "l", "p"),
+  lty = c(1, 2, 0),
+  pch = c(-1, -1, 1),
+  col = c("black", gray(0.4), "black"),
+  lwd = c(2, 1, 0),
+  zero.line = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{An object of S3 class \code{scdensity}.}
@@ -33,11 +42,11 @@ the constrained estimate, 2) the unconstrained estimate, and 3) the Q-Q plot.}
 
 \item{lty}{A vector of up to length 3, specifying the \code{lty} arguments passed to the
 plot commands for 1) the constrained estimate, 2) the unconstrained estimate, and 3)
-the Q-Q plot. See the description of \code{lty} in \code{\link[graphics]{par}}.}
+the Q-Q plot. See the description of \code{lty} in \code{\link[graphics:par]{graphics::par()}}.}
 
 \item{pch}{A vector of up to 3 integers specifying the \code{pch} argument passed to the
 plot commands for 1) the constrained estimate, 2) the unconstrained estimate, and 3)
-the Q-Q plot.  See \code{\link[graphics]{points}} for the integer codes.}
+the Q-Q plot.  See \code{\link[graphics:points]{graphics::points()}} for the integer codes.}
 
 \item{col}{A vector of up to 3 strings specifying the \code{col} argument passed to the
 plot commands for 1) the constrained estimate, 2) the unconstrained estimate, and 3)

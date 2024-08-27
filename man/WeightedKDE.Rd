@@ -11,7 +11,7 @@ WeightedKDE(P)
 }
 \value{
 A mutated version of the input list, with additional elements giving the optimization
-        output.
+output.
 }
 \description{
 This function sets up the problem and finds an optimal shape-constrained estimate for a

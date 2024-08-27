@@ -27,15 +27,15 @@ This function takes arguments slightly differently from solve.QP, to make it mor
 convenient for internal use.  It also implements measures to robustify calls to solve.QP:
 \itemize{
 \item A rounding hack to prevent a bug in solve.QP that occasionally produces all-NaN
- solutions without returning a warning or error.  Rounding has been found to eliminate
- \emph{almost} all such bugs.
+solutions without returning a warning or error.  Rounding has been found to eliminate
+\emph{almost} all such bugs.
 \item A call to lpSolve's lp() to check feasibility before running solve.QP
 \item solve.QP is called within tryCatch to eliminate unwanted crashes.
 }
 The output of this function is a list with elements
 \itemize{
 \item \code{flag} is 0 for successful completion, 1 for failure at the LP check stage,
-   and 2 for failure at the QP stage (usually the "NaN solution" bug).
+and 2 for failure at the QP stage (usually the "NaN solution" bug).
 \item \code{QP} is the list returned by \code{solve.QP}.  If the QP was not run due to
 infeasibility, this element is NULL.
 }

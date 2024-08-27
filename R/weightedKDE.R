@@ -431,10 +431,10 @@ BuildConstraints <- function(P) {
         }
       } else {
         AshapeNew <- NormalGridFcn(gR, 0, yL, P$h) + NormalGridFcn(gR, 0, yR, P$h)
-        P$Ashape <- rbind(P$Ashape, -AshapeNew)
-        P$bshape <- c(P$bshape, rep(-P$boundTol, dim(AshapeNew)[1]))
       }
     }
+    P$Ashape <- rbind(P$Ashape, -AshapeNew)
+    P$bshape <- c(P$bshape, rep(-P$boundTol, dim(AshapeNew)[1]))
   }
 
   # Bimodal constraint: requires modeLoc to be non-null

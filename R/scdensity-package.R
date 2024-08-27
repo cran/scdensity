@@ -7,10 +7,10 @@
 #' variety of shape constraints, including unimodality, bimodality, symmetry, and others.
 #'
 #' All of the package's functionality can be accessed through the function
-#' \code{\link[scdensity]{scdensity}}.  See that function's help file.  The function is used
-#' just like \code{\link[stats]{density}}, but with extra arguments for handling the constraints.
+#' [scdensity::scdensity()].  See that function's help file.  The function is used
+#' just like [stats::density()], but with extra arguments for handling the constraints.
 #'
-#' @docType package
-#' @name scdensity-package
-NULL
+#' @keywords internal
+#' @aliases scdensity-package NULL
+"_PACKAGE"
 

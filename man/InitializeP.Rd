@@ -17,7 +17,7 @@ InitializeP(x, h, constraints, method, opts)
 }
 \value{
 A list in the form needed by WeightedKDE(), with additional elements initialized
- to their default values.
+to their default values.
 }
 \description{
 Initialize the list of problem-related objects.

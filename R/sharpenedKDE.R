@@ -208,7 +208,7 @@ improve<-function(startValue, x, confun, verbose=FALSE, maxpasses=500,
 #'
 #' Given a set of function values for increasing abscissa values, we call this unimodal if
 #' there are zero or one values that are greater than all of their neighbors. Before
-#' checking for modes, the values are scaled to fill [0, 1] and then rounded to four
+#' checking for modes, the values are scaled to fill \[0, 1\] and then rounded to four
 #' decimal places.  This eliminates unwanted detection of tiny differences as modes.
 #'
 #' This function is intended to be called from other functions in the scdensity package.
@@ -243,7 +243,7 @@ isUnimodal = function(f)  {
 #' values having indices greater than or equal to ix are non-decreasing or non-increasing.
 #' Returns TRUE if they are, FALSE otherwise.
 #'
-#' As in \code{isUnimodal}, the values are first scaled to fill [0, 1] and then rounded to
+#' As in \code{isUnimodal}, the values are first scaled to fill \[0, 1\] and then rounded to
 #' four decimal places.  This eliminates unwanted detection of tiny differences as modes.
 #'
 #' This function is intended to be called from other functions in the scdensity package.
@@ -280,7 +280,7 @@ isMonotoneR = function(f, ix)  {
 #' values having indices less than or equal to ix are non-decreasing or non-increasing.
 #' Returns TRUE if they are, FALSE otherwise.
 #'
-#' As in \code{isUnimodal}, the values are first scaled to fill [0, 1] and then rounded to
+#' As in \code{isUnimodal}, the values are first scaled to fill \[0, 1\] and then rounded to
 #' four decimal places.  This eliminates unwanted detection of tiny differences as modes.
 #'
 #' This function is intended to be called from other functions in the scdensity package.
@@ -316,7 +316,7 @@ isMonotoneL = function(f, ix)  {
 #' Given a vector of n function values and an index ix, check whether values 1:ix are zero.
 #' Returns TRUE if they are, FALSE otherwise.
 #'
-#' As in \code{isUnimodal}, the values are first scaled to fill [0, 1] and then rounded to
+#' As in \code{isUnimodal}, the values are first scaled to fill \[0, 1\] and then rounded to
 #' four decimal places.  Because of this it is still possible to use the "bounded support"
 #' constraints with the Gaussian kernel.
 #'
@@ -348,7 +348,7 @@ isBoundedL = function(f, ix)  {
 #' Given a vector of n function values and an index ix, check whether values with indices
 #' greater than or equal to ix are zero. Returns TRUE if they are, FALSE otherwise.
 #'
-#' As in \code{isUnimodal}, the values are first scaled to fill [0, 1] and then rounded to
+#' As in \code{isUnimodal}, the values are first scaled to fill \[0, 1\] and then rounded to
 #' four decimal places.  Because of this it is still possible to use the "bounded support"
 #' constraints with the Gaussian kernel.
 #'

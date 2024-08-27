@@ -10,6 +10,11 @@ variety of shape constraints, including unimodality, bimodality, symmetry, and o
 }
 \details{
 All of the package's functionality can be accessed through the function
-\code{\link[scdensity]{scdensity}}.  See that function's help file.  The function is used
-just like \code{\link[stats]{density}}, but with extra arguments for handling the constraints.
+\code{\link[=scdensity]{scdensity()}}.  See that function's help file.  The function is used
+just like \code{\link[stats:density]{stats::density()}}, but with extra arguments for handling the constraints.
 }
+\author{
+\strong{Maintainer}: Mark A. Wolters \email{mark@mwolters.com} (\href{https://orcid.org/0000-0001-7638-8222}{ORCID})
+
+}
+\keyword{internal}
